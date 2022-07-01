@@ -1,0 +1,14 @@
+.options button {
+    width: 48px;
+    height: 48px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.options button:hover {
+    background: #D9ECFD;
+}

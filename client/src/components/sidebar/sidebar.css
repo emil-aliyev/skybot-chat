@@ -1,0 +1,19 @@
+.sidebar {
+    width: 64px;
+    height: 100vh;
+    background: #FAFAFA;
+    border-width: 0px 1px 0px 0px; /* top right bottom left */
+    border-style: solid;
+    border-color: #E9EBED;
+    display: flex;
+    flex-direction: column;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin-bottom: 4px;
+}

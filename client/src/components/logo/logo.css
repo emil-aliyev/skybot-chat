@@ -1,0 +1,11 @@
+.logo button {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 14.3px;
+    margin-right: 14.3px;
+    width: 35.4px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

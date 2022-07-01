@@ -1,0 +1,41 @@
+.channel {
+    width: 264px;
+    height: 36px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    cursor: pointer;
+}
+
+.channel-selected {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.channel-icon {
+    width: 24px;
+    height: 100%;
+    transform: translateY(7%);
+}
+
+.channel-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    vertical-align: middle;
+    width: fit-content;
+    height: 100%;
+    padding-left: 8px;
+}
+
+.message-count {
+    width: fit-content;
+    line-height: 27px;
+    height: 100%;
+    padding-right: 16px;
+    position: absolute;
+    left: 97%;
+    color: #6A7681;
+}

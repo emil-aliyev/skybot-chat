@@ -1,0 +1,84 @@
+.team-chat {
+    width: 264px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+}
+
+.channels {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-width: 0px 0px 1px 0px; /* top right bottom left */
+    border-style: solid;
+    border-color: #E9EBED;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.chat-name {
+    padding-bottom: 16px;
+    padding-top: 20px;
+    padding-left: 16px;
+}
+
+.chat-name h1 {
+    width: 100%;
+    height: 32px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.channel-toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    position: relative;
+}
+
+.channel-toggle h4 {
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 11.33px;
+    margin-right: 4px;
+}
+
+.channel-toggle {
+    margin-left: 19.33px;
+}
+
+.toggle, .add-channel {
+    color: #555F68;
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+}
+
+.chat-header {
+    height: 20px;
+    display: flex;
+    position: relative;
+}
+
+.channel-count {
+    width: 20px;
+    height: 16px;
+    margin-right: 55.33px;
+}
+
+.channel-count p {
+    color: #6A7681;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    position: relative;
+    top: 60%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
