@@ -6,6 +6,9 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
+    border-width: 0px 1px 0px 0px; /* top right bottom left */
+    border-style: solid;
+    border-color: #E9EBED;
 }
 
 .channels {
@@ -21,13 +24,13 @@
 }
 
 .chat-name {
-    padding-bottom: 16px;
-    padding-top: 20px;
-    padding-left: 16px;
+    width: 140px;
+    height: 32px;
+    margin: 20px 116px 24px 16px;
 }
 
 .chat-name h1 {
-    width: 100%;
+    width: 140px;
     height: 32px;
     font-weight: 600;
     font-size: 24px;

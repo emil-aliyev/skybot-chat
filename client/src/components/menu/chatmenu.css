@@ -1,5 +1,42 @@
 .chat-menu {
     width: 768px;
     height: 100%;
-    background: red;
+    position: relative;
+}
+
+header {
+    width: 768px;
+    height: 72px;
+    border-width: 0px 0px 1px 0px; /* top right bottom left */
+    border-style: solid;
+    border-color: #E9EBED;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+header h1 {
+    width: 768px;
+    height: 100%;
+    padding: 22px 614px 22px 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.messenger {
+    position: absolute;
+    width: 736px;
+    height: 120px;
+    top: 764px;
+}
+
+.messenger input {
+    width: 736px;
+    height: 48px;
+    border: none;
+}
+
+.messenger input:focus {
+    outline: none;
 }

@@ -8,12 +8,16 @@ import ChatLobby from './components/lobby/ChatLobby';
 
 function App() {
     return(
-        <BrowserRouter>
-            <div className="page">
-                <Sidebar/>
-                <ChatLobby/>
-            </div>
-        </BrowserRouter>
+        <div className="page">
+            <Sidebar/>
+            <ChatLobby/>
+        </div>
+        // <BrowserRouter>
+        //     <div className="page">
+        //         <Sidebar/>
+        //         <ChatLobby/>
+        //     </div>
+        // </BrowserRouter>
     )
 }
 

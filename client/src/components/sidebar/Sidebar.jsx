@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import "./sidebar.css"
 
-import SidebarOption from "../sidebaroption/SidebarOption";
+import SidebarOption from "./sidebaroption/SidebarOption";
 import Logo from "../logo/Logo";
 
 import { AiOutlineHome, 
@@ -19,14 +19,15 @@ import { AiOutlineHome,
 
 export default function Sidebar() {
 
-    const navigate = useNavigate();
-    const navigateToChat = () => navigate.push('/chat');
+    // const navigate = useNavigate();
+    // const navigateToChat = () => navigate.push('/chat');
 
     return (
         <div className="sidebar">
             <Logo></Logo>
             <div className="options">
-                <SidebarOption size={25} color="#052B4D" onClick={navigateToChat}>
+                {/* <SidebarOption size={25} color="#052B4D" onClick={navigateToChat}> */}
+                <SidebarOption size={25} color="#052B4D">
                     <AiOutlineHome/>
                 </SidebarOption>
 
