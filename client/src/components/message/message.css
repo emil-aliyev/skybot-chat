@@ -1,0 +1,39 @@
+.message {
+    width: fit-content;
+    height: 36px;
+    margin: 16px 40px 4px 56px;
+}
+
+.message-text {
+    padding: 8px 12px 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    width: fit-content;
+    height: 36px;
+    background: #E9EBED;
+    border-radius: 16px;
+}
+
+.message-info {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+
+    /* identical to box height, or 133% */
+
+    /* Steel/70 */
+    color: #555F68;
+}
+
+p[data-sent="true"] {
+    background: #D9ECFD;
+}
+
+div[data-sent="true"] {
+    align-self: flex-end;
+}

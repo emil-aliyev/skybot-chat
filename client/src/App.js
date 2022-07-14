@@ -4,9 +4,11 @@ import "./app.css";
 
 import Sidebar from "./components/sidebar/Sidebar";
 import ChatLobby from './components/lobby/ChatLobby';
+import { users } from "./api/data/users";
 
 
 function App() {
+
     return(
         <div className="page">
             <Sidebar/>

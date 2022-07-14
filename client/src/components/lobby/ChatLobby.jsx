@@ -5,8 +5,24 @@ import TeamChat from '../menu/TeamChat';
 import './chatlobby.css';
 
 export default function ChatLobby() {
+        
+    const currentUser = getUsers()[0];
 
-    const [channels, setChannels] = useState(getChannels());
+    function getUserChannel(userId, channels) {
+        console.log(`userId: ${userId}`);
+        const userChannels = [];
+
+        channels.forEach(channel => {
+            console.log(channel);
+            if (channel.members.includes(userId)) {
+                userChannels.push(channel);
+            }
+        });
+        
+        return userChannels
+    }
+    
+    const [channels, setChannels] = useState(getUserChannel(currentUser.id, getChannels()));
     const [users, setUsers] = useState(getUsers());
     const [selectedChannel, setSelectedChannel] = useState({});    
 
@@ -17,7 +33,7 @@ export default function ChatLobby() {
             setSelectedChannel={setSelectedChannel}
             />
             {Object.keys(selectedChannel).length !== 0 ? 
-            <ChatMenu selectedChannel={selectedChannel}/> :
+            <ChatMenu selectedChannel={selectedChannel} currentUser={currentUser}/> :
             ""}
         </div>
     )
