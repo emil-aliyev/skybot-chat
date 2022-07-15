@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { getChannels, getUsers } from '../../api/logic/getters';
+import ChannelDescription from '../channel/channelDescription/ChannelDescription';
 import ChatMenu from '../menu/ChatMenu';
 import TeamChat from '../menu/TeamChat';
 import './chatlobby.css';
@@ -35,6 +36,10 @@ export default function ChatLobby() {
             {Object.keys(selectedChannel).length !== 0 ? 
             <ChatMenu selectedChannel={selectedChannel} currentUser={currentUser}/> :
             ""}
+            {Object.keys(selectedChannel).length !== 0 ? 
+            <ChannelDescription selectedChannel={selectedChannel}></ChannelDescription> :
+            ""}
+            
         </div>
     )
 }

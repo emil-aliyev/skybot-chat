@@ -2,7 +2,7 @@ export const channels = [{
     id: 0,
     name: 'Design',
     icon: "&#128507;",
-    members : [2, 3],
+    members : [2, 3, 1],
     messages : [{
             text: 'Hello',
             senderId : 1,
@@ -53,4 +53,35 @@ export const channels = [{
             senderId: 2,
             timestamp: '21:18:54'
         }]
-}]
+},{
+    id: 3,
+    name: 'Analytics',
+    icon: "&#128507;",
+    members : [2, 1],
+    messages : [{
+            text: 'Hello',
+            senderId : 1,
+            timestamp: '21:18:53'
+        }, 
+        {
+            text: 'Hey',
+            senderId: 2,
+            timestamp: '21:18:54'
+        }]
+},{
+    id: 4,
+    name: 'Corporate',
+    icon: "&#128507;",
+    members : [2, 3, 1],
+    messages : [{
+            text: 'Hello',
+            senderId : 1,
+            timestamp: '21:18:53'
+        }, 
+        {
+            text: 'Hey',
+            senderId: 2,
+            timestamp: '21:18:54'
+        }]
+}
+]

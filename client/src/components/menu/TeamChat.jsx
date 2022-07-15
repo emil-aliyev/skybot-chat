@@ -6,15 +6,23 @@ import { AiOutlineDown, AiOutlinePlus } from "react-icons/ai";
 
 export default function TeamChat( { channels, selectedChannel, setSelectedChannel } ) {
     console.log(`Selected channel: ${selectedChannel.name}`);
+
+    function toggleChannelPanel() {
+        const channelPanel = document.querySelector(".channels-wrapper");
+        const currentMode = channelPanel.style.display;
+        console.log(`DISPLAY: ${currentMode}`);
+        channelPanel.style.display = currentMode === "none" ? "inline" : "none";
+    }
+
     return (
         <div className="team-chat">
-                <div className="chat-name">
+                <div className="chat-intro">
                     <h1>Team chat</h1>
                 </div>
                 <div className="chat-header">
                     <div className="header-wrapper">
                         <div className="channel-toggle">
-                            <div className="toggle">
+                            <div className="toggle" onClick={toggleChannelPanel}>
                                 <AiOutlineDown/>
                             </div>
                             <h4>Public Channels</h4>
@@ -25,15 +33,17 @@ export default function TeamChat( { channels, selectedChannel, setSelectedChanne
                         </div>
                     </div>
             </div>
-            <div className="channels">
-                {channels.map((channel) => {
-                    return <Channel key={channel.id}
-                    channel={channel}
-                    selectedChannel={selectedChannel}
-                    selected={channel.id === selectedChannel.id}
-                    setSelectedChannel={setSelectedChannel}
-                    />;
-                })}
+            <div className="channels-wrapper">
+                <div className="channels">
+                    {channels.map((channel) => {
+                        return <Channel key={channel.id}
+                        channel={channel}
+                        selectedChannel={selectedChannel}
+                        selected={channel.id === selectedChannel.id}
+                        setSelectedChannel={setSelectedChannel}
+                        />;
+                    })}
+                </div>
             </div>
         </div>
     )

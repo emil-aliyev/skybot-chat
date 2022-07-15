@@ -1,5 +1,5 @@
 .team-chat {
-    width: 264px;
+    width: 290px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
 }
 
 .channels {
-    height: fit-content;
+    min-height: 144px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -23,13 +23,13 @@
     overflow-x: hidden;
 }
 
-.chat-name {
-    width: 140px;
+.chat-intro {
+    width: 100%;
     height: 32px;
     margin: 20px 116px 24px 16px;
 }
 
-.chat-name h1 {
+.chat-intro h1 {
     width: 140px;
     height: 32px;
     font-weight: 600;
@@ -44,15 +44,10 @@
     position: relative;
 }
 
-.channel-toggle h4 {
-    font-size: 14px;
-    line-height: 20px;
-    margin-left: 11.33px;
-    margin-right: 4px;
-}
-
 .channel-toggle {
-    margin-left: 19.33px;
+    position: relative;
+    width: 100%;
+    margin-left: auto;
 }
 
 .toggle, .add-channel {
@@ -60,6 +55,35 @@
     cursor: pointer;
     width: 13px;
     height: 13px;
+}
+
+.channel-toggle h4 {
+    position: absolute;
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 12px;
+    margin-right: 4px;
+    left: 30px;
+}
+
+.channel-count {
+    position: absolute;
+    right: 105px;
+}
+
+.toggle {
+    position: absolute;
+    left: 20px;
+}
+
+.add-channel {
+    position: absolute;
+    margin-left: auto;
+    right: 20px;
+}
+
+.header-wrapper {
+    width: 100%;
 }
 
 .chat-header {
@@ -71,7 +95,6 @@
 .channel-count {
     width: 20px;
     height: 16px;
-    margin-right: 55.33px;
 }
 
 .channel-count p {
@@ -84,4 +107,8 @@
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.channels-wrapper {
+    display: inline;
 }
