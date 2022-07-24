@@ -12,10 +12,13 @@
 }
 
 .channels {
-    min-height: 144px;
+    max-height: 265px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 8px;
     border-width: 0px 0px 1px 0px; /* top right bottom left */
     border-style: solid;
     border-color: #E9EBED;
@@ -79,7 +82,7 @@
 .add-channel {
     position: absolute;
     margin-left: auto;
-    right: 20px;
+    right: 24px;
 }
 
 .header-wrapper {

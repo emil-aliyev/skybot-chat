@@ -6,6 +6,7 @@
     border-style: solid;
     border-color: #E9EBED;
     overflow-y: hidden; /* ВЫЛЕЗАЕТ ПАЧМУТА АААА ПУСКАЙ БУИТ */
+    font-family: "Poppins";
 }
 
 .chat-field {
@@ -106,10 +107,10 @@
 }
 
 .messages {
-    min-height: 692px;
+    max-height: calc(94% - 171px);
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     overflow-y: scroll;
     overflow-x: hidden;
 }

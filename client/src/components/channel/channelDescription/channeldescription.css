@@ -1,11 +1,12 @@
 .channel-info {
     height: 100vh;
     width: 350px;
+    font-family: "Poppins";
 }
 
 .icon-wrapper {
-    height: 64px;
-    width: 64px;
+    height: 128px;
+    width: 128px;
     border-radius: 100%;
     border-width: 1px; /* top right bottom left */
     border-style: solid;
@@ -16,13 +17,21 @@
 }
 
 .icon-wrapper h1 {
-    margin: 10px;
+    /* margin: 10px; */
+    font-size: 4rem;
+    line-height: 128px;
 }
 
 .channel-info header {
     width: 100%;
     height: 200px;
     margin: auto;
+}
+
+.channel-info {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr 3fr;
 }
 
 .channel-title h1 {
@@ -33,4 +42,57 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 24px;
+}
+
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.members-list-panel{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: fit-content;
+    background: #FFFFFF;
+
+    /* Shadow 1 */
+    box-shadow: 0px -0.5px 4px rgba(0, 0, 0, 0.08), 0px 0px 0.5px rgba(0, 0, 0, 0.16), 0px 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.members-list{
+    margin: 16px 0px 16px 24px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 16px;
+}
+
+.member{
+    display: flex;
+}
+
+.member-panel{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background-color: #F4F5F6;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.icon-wrapper .user-icon{
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.icon-wrapper .user-icon p {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 4rem;
+    color: #fff;
+    line-height: 128px;
 }

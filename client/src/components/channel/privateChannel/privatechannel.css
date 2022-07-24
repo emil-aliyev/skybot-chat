@@ -1,0 +1,28 @@
+.private{
+    margin: 0px 8px 0px 8px;
+    cursor: pointer;
+}
+
+.private .channel-selected {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.member-name {
+    font-size: 1rem;
+    line-height: 40px;
+    padding-left: 8px;
+}
+
+.private-channel-count{
+    color: #6A7681;
+    font-size: 0.9rem;
+    margin: auto;
+    line-height: 20px;
+}
+
+.private-message-count{
+    margin: auto;
+    line-height: 20px;
+    color: #6A7681;
+}

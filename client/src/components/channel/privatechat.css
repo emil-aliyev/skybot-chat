@@ -1,0 +1,10 @@
+.private-channels{
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 1em;
+}
+
+.private-channel-panel{
+    margin-top: 8px;
+}
+

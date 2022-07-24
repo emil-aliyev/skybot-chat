@@ -1,50 +1,70 @@
-import React from "react";
-/*import { useState } from "react";*/
+import { React, useState } from "react";
+
 import './teamchat.css';
-import Channel from "../channel/Channel";
-import { AiOutlineDown, AiOutlinePlus } from "react-icons/ai";
 
-export default function TeamChat( { channels, selectedChannel, setSelectedChannel } ) {
-    console.log(`Selected channel: ${selectedChannel.name}`);
+import { users } from "../../api/data/users";
 
-    function toggleChannelPanel() {
-        const channelPanel = document.querySelector(".channels-wrapper");
-        const currentMode = channelPanel.style.display;
-        console.log(`DISPLAY: ${currentMode}`);
-        channelPanel.style.display = currentMode === "none" ? "inline" : "none";
+import PrivateChat from "../channel/PrivateChat";
+import Channel from "../channel/publicChannel/Channel";
+import PanelHeader from "../panelheader/PanelHeader";
+import Popup from "../Popup/Popup";
+
+
+
+export default function TeamChat( { channels, setChannels, selectedChannel, setSelectedChannel, currentUser } ) {
+
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    function PopupOpen(){
+        setIsPopupOpen(true);
     }
+
+    function PopupClose(){
+        setIsPopupOpen(false);
+    }
+
+    const publicChannels = channels.filter(channel => channel.name !== "");
 
     return (
         <div className="team-chat">
-                <div className="chat-intro">
-                    <h1>Team chat</h1>
-                </div>
-                <div className="chat-header">
-                    <div className="header-wrapper">
-                        <div className="channel-toggle">
-                            <div className="toggle" onClick={toggleChannelPanel}>
-                                <AiOutlineDown/>
-                            </div>
-                            <h4>Public Channels</h4>
-                            <div className="channel-count"><p>({channels.length})</p></div>
-                            <div className="add-channel">
-                                <AiOutlinePlus/>
-                            </div>
-                        </div>
-                    </div>
+            <div className="chat-intro">
+                <h1>Team chat</h1>
+            </div>
+            <div className="public-channel-panel">
+                <PanelHeader 
+                title={"Public Channels"} 
+                count={publicChannels.length} 
+                panelWrapperClass={".channels-wrapper"} 
+                onAddClick={PopupOpen}/>
             </div>
             <div className="channels-wrapper">
                 <div className="channels">
-                    {channels.map((channel) => {
-                        return <Channel key={channel.id}
+                    {publicChannels.map((channel) => {
+                        return channel.name !== "" ? 
+                        <Channel key={channel.id}
                         channel={channel}
                         selectedChannel={selectedChannel}
                         selected={channel.id === selectedChannel.id}
                         setSelectedChannel={setSelectedChannel}
-                        />;
+                        /> : "";
                     })}
                 </div>
             </div>
+            {<PrivateChat 
+            currentUser={currentUser} 
+            channels={channels} 
+            selectedChannel={selectedChannel}
+            setSelectedChannel={setSelectedChannel}/>}
+
+            {isPopupOpen ?
+            <Popup  handleClose={PopupClose}>
+                <h2>Create a public channel</h2>
+                <h4>Name</h4>
+                <input type="text"/>
+                
+            </Popup>    
+            : ""}
+
         </div>
     )
     

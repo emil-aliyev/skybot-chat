@@ -1,7 +1,15 @@
 .message {
+    display: grid;
+    grid-auto-flow: column;
     width: fit-content;
-    height: 36px;
-    margin: 16px 60px 4px 56px;
+    max-width: 248px;
+    word-break: break-word;
+    height: fit-content;
+    margin: 16px 32px 4px 32px;
+}
+
+.message .user-icon {
+    margin: 8px;
 }
 
 .message-text {
@@ -12,7 +20,7 @@
     font-size: 16px;
     line-height: 20px;
     width: fit-content;
-    height: 36px;
+    height: fit-content;
     background: #E9EBED;
     border-radius: 16px;
 }
@@ -31,9 +39,11 @@
 }
 
 p[data-sent="true"] {
+    order: -1;
     background: #D9ECFD;
 }
 
 div[data-sent="true"] {
+    flex-direction: row-reverse;
     align-self: flex-end;
 }

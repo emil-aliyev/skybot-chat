@@ -1,0 +1,24 @@
+.private-chats header{
+    width: 100%;
+    height: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    /* margin-top: 8px; */
+    margin-bottom: 8px;
+}
+
+.private-channel-toggle{
+    width: 100%;
+    height: 100%;
+}
+
+
+.private-toggle{
+    margin: auto;
+    cursor: pointer;
+}
+
+.private-add-channel{
+    margin: auto;
+    cursor: pointer;
+}
