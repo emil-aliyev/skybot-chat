@@ -19,7 +19,8 @@ export default function Channel({ channel, selectedChannel, selected, setSelecte
                     <p>{toEmoji(channel.icon)}</p>
                 </div>
                 <div className="channel-name">{channel.name}</div>
-                <div className="message-count">{channel.messages.length.toString()}</div>
+                {/* <div className="message-count">{channel.messages.length.toString()}</div> */}
+                <div className="message-count">0</div> 
             </div>
         </div>
     )

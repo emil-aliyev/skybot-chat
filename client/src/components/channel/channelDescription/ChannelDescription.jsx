@@ -26,17 +26,17 @@ export default function ChannelDescription( {selectedChannel, currentUser} ) {
                     <div className="member-panel">
                         {<PanelHeader
                         title={"Members"}
-                        count={selectedChannel.members.length}
+                        count={selectedChannel.roomUsers.length}
                         panelWrapperClass={".members-list"}/>}
                     </div>
 
                     <div className="members-list">
-                        {selectedChannel.members.map(memberId => {
-                            const member = getUserInfo(memberId);
+                        {selectedChannel.roomUsers.map(member => {
+                            // const member = getUserInfo(memberId);
                             return(
                                 <div className="member">
-                                    <UserIcon key={member.id} userName={member.name}/>
-                                    <p className="member-name">{member.name}</p>
+                                    <UserIcon key={member.id} userName={member.fullName}/>
+                                    <p className="member-name">{member.fullName}</p>
                                 </div>
                             )
                         })}

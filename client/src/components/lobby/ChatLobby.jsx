@@ -1,27 +1,40 @@
-import { React, useState } from 'react';
-import { getChannels, getUsers, getUserChannel, getOtherUserInfo } from '../../api/logic/getters';
+import { React, useEffect } from 'react';
 import ChannelDescription from '../channel/channelDescription/ChannelDescription';
 import ChatMenu from '../menu/ChatMenu';
 import TeamChat from '../menu/TeamChat';
 import './chatlobby.css';
 
-export default function ChatLobby() {
-        
-    const currentUser = getUsers()[0];
-    
-    const [channels, setChannels] = useState(getUserChannel(currentUser.id, getChannels()));
-    const [users, setUsers] = useState(getUsers());
-    const [selectedChannel, setSelectedChannel] = useState({});    
+export default function ChatLobby(
+    {currentUser,
+    channels,
+    setChannels,
+    // users,
+    // setUsers,
+    selectedChannel,
+    setSelectedChannel,
+    // connect,
+    createChannel,
+    sendMessage,
+    getAllUsers}) {
 
     return(
         <div className="chat-lobby">
-            <TeamChat channels={channels}
+            <TeamChat 
+            createChannel={createChannel}
+            channels={channels}
+            setChannels={setChannels}
             selectedChannel={selectedChannel}
             setSelectedChannel={setSelectedChannel}
             currentUser={currentUser}
+            getAllUsers={getAllUsers}
             />
-            {Object.keys(selectedChannel).length !== 0 ? 
-            <ChatMenu selectedChannel={selectedChannel} setSelectedChannel={setSelectedChannel} currentUser={currentUser} isPrivate={selectedChannel.name === ""}/> :
+            {Object.keys(selectedChannel).length !== 0 ?
+            <ChatMenu 
+            sendMessage={sendMessage}
+            selectedChannel={selectedChannel} 
+            setSelectedChannel={setSelectedChannel} 
+            currentUser={currentUser} 
+            isPrivate={selectedChannel.name === ""}/> :
             ""}
             {Object.keys(selectedChannel).length !== 0 ? 
             <ChannelDescription 

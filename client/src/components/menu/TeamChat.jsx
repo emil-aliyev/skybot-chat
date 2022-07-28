@@ -2,16 +2,14 @@ import { React, useState } from "react";
 
 import './teamchat.css';
 
-import { users } from "../../api/data/users";
-
 import PrivateChat from "../channel/PrivateChat";
 import Channel from "../channel/publicChannel/Channel";
 import PanelHeader from "../panelheader/PanelHeader";
-import Popup from "../Popup/Popup";
+import AddChannelPopup from "../Popup/AddChannelPopup/AddChannelPopup";
 
 
 
-export default function TeamChat( { channels, setChannels, selectedChannel, setSelectedChannel, currentUser } ) {
+export default function TeamChat( { createChannel, channels, setChannels, selectedChannel, setSelectedChannel, currentUser, getAllUsers } ) {
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -19,11 +17,9 @@ export default function TeamChat( { channels, setChannels, selectedChannel, setS
         setIsPopupOpen(true);
     }
 
-    function PopupClose(){
-        setIsPopupOpen(false);
-    }
+    const publicChannels = channels//.filter(channel => channel.name !== "");
 
-    const publicChannels = channels.filter(channel => channel.name !== "");
+    console.log(publicChannels);
 
     return (
         <div className="team-chat">
@@ -57,12 +53,12 @@ export default function TeamChat( { channels, setChannels, selectedChannel, setS
             setSelectedChannel={setSelectedChannel}/>}
 
             {isPopupOpen ?
-            <Popup  handleClose={PopupClose}>
-                <h2>Create a public channel</h2>
-                <h4>Name</h4>
-                <input type="text"/>
-                
-            </Popup>    
+                <AddChannelPopup
+                createChannel={createChannel}
+                currentUser={currentUser}
+                getAllUsers={getAllUsers}
+                setChannels={setChannels}
+                setIsPopupOpen={setIsPopupOpen}/>
             : ""}
 
         </div>
