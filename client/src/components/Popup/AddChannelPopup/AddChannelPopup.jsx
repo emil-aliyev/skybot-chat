@@ -4,29 +4,31 @@ import { AiOutlineSmile } from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import Picker from 'emoji-picker-react';
 import Select from 'react-select';
-
+import SignalrEvents from "../../../api/SignalrEvents";
 import Popup from "../Popup";
-import { channels } from "../../../api/data/channels";
 
-export default function AddChannelPopup({ createChannel, currentUser, setChannels, getAllUsers, setIsPopupOpen }){
+import { getAllUsers } from "../../../api/user/user";
+
+const createChannelEvent = new SignalrEvents('CreateRoom', 'AddChannel');
+
+export default function AddChannelPopup({ connectionController, currentUser, setChannels, setIsPopupOpen }){
 
     const [users, setUsers] = useState([]); 
 
     useEffect(() => {
+        connectionController.subscribeEvent(createChannelEvent);
 
-        const connect = async () => {
-            try {
-                getAllUsers().then(data => setUsers(users => data));
-            } catch (err) {
-                console.log(err);
-            }
+        createChannelEvent.on = (channel) => {
+            setChannels(channels => [...channels, channel]);
         }
 
-        connect();
+        getAllUsers().then(data => {
+            setUsers(data);
+        }).catch(err => console.log(err));
     }, [])
 
 
-    const options = users.map(user => {
+    const options = users.filter(user => user.id !== currentUser.user.id).map(user => {
         return {value: user.id, label: user.fullName}
     })
 
@@ -38,7 +40,6 @@ export default function AddChannelPopup({ createChannel, currentUser, setChannel
         setChosenEmoji(emojiObject);
     };
 
-
     const openEmojiPickerHandler = () => setIsOpenEmojiPicker(isOpenEmojiPicker => !isOpenEmojiPicker);
 
     const createRoom = (event) => {
@@ -46,37 +47,15 @@ export default function AddChannelPopup({ createChannel, currentUser, setChannel
         const roomName = document.querySelector('input').value;
         try{
             const members = selectedOptions.map(member => {
-                // console.log("OPTION: ", member);
-                // return member[0].Id;
-                return {Id: member[0].Id, FullName: member[0].FullName};
+                return member[0].Id;
             });
-            // console.log("MEMBERS: ", members);
-            console.log("SENDING THIS: ", roomName, {Id:currentUser.user.id, FullName:currentUser.user.fullName}, members);
-            createChannel(roomName, {FullName:currentUser.user.fullName, Id:currentUser.user.id}, members);
 
-            const newChannel = {
-                id: 123132321,
-                name: roomName,
-                icon: "&#10024;",
-                members : selectedOptions.map(member => member.Id),
-                messages : [{
-                        text: 'Hello',
-                        senderId : 1,
-                        timestamp: '21:18:53'
-                    }, 
-                    {
-                        text: 'Hey',
-                        senderId: 2,
-                        timestamp: '21:18:54'
-                    },
-                    {
-                        text: 'Heyo guuuys',
-                        senderId: 3,
-                        timestamp: '21:18:56'
-                    }]
-            }
+            console.log("SENDING THIS: ", roomName, currentUser.user.id, members);
 
-            setChannels(channels => [...channels, newChannel]);
+            createChannelEvent.invoke(currentUser.user.id, roomName, members)
+
+
+            // setChannels(channels => [...channels, newChannel]);
         } catch(err){
             console.log(err);
         };

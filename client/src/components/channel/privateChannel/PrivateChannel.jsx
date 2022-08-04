@@ -4,8 +4,6 @@ import "./privatechannel.css";
 
 import UserIcon from "../../userIcon/UserIcon";
 
-
-
 export default function PrivateChannel({ user, channel, selectedChannel, setSelectedChannel }){
 
     const setSelectedChannelHandler = () => {

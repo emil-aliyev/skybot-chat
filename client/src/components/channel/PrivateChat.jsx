@@ -2,8 +2,6 @@ import React from "react";
 
 import "./privatechat.css";
 
-import { getOtherUserInfo, getUserInfo } from "../../api/logic/getters";
-
 import PanelHeader from "../panelheader/PanelHeader";
 import PrivateChannel from "./privateChannel/PrivateChannel";
 

@@ -1,13 +1,11 @@
 import React from "react";
 import "./channeldescription.css";
-import { togglePanel } from "../../../api/logic/toggle";
 import toEmoji from "../../../api/logic/toEmoji";
-import { AiOutlineDown, AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import UserIcon from "../../userIcon/UserIcon";
-import { getUserInfo, getOtherUserInfo } from "../../../api/logic/getters";
 import PanelHeader from "../../panelheader/PanelHeader";
 
-export default function ChannelDescription( {selectedChannel, currentUser} ) {
+export default function ChannelDescription( {selectedChannel, currentUser, removeUser} ) {
         return(
         <div className="channel-info">
                 <div className="channel-display">
@@ -35,8 +33,14 @@ export default function ChannelDescription( {selectedChannel, currentUser} ) {
                             // const member = getUserInfo(memberId);
                             return(
                                 <div className="member">
-                                    <UserIcon key={member.id} userName={member.fullName}/>
-                                    <p className="member-name">{member.fullName}</p>
+                                    <div className="member-row">
+                                        <UserIcon key={member.id} userName={member.fullName}/>
+                                        <p className="member-name">{member.fullName}</p>
+                                        <button onClick={() => {
+                                            console.log(selectedChannel, parseInt(selectedChannel.id), parseInt(member.id))
+                                            removeUser(selectedChannel.name, member.id, selectedChannel.id)
+                                            }}><AiOutlineClose/></button>
+                                    </div>
                                 </div>
                             )
                         })}

@@ -1,14 +1,13 @@
 import React from "react";
 import "./channel.css";
-import { IconContext } from "react-icons";
-import { AiOutlineStar } from "react-icons/ai";
 import toEmoji from "../../../api/logic/toEmoji";
 
-export default function Channel({ channel, selectedChannel, selected, setSelectedChannel }) {
+export default function Channel({ currentUser, channel, selectedChannel, selected, setSelectedChannel, addToGroup }) {
 
     // console.log(`${channel.id} === ${selectedChannel.id} -> ${channel.id === selectedChannel.id}`);
 
     const setSelectedChannelHandler = () => {
+        addToGroup(channel.name, currentUser.user.fullName);
         setSelectedChannel(channel);
     } 
 
