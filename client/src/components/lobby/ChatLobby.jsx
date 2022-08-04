@@ -15,11 +15,15 @@ export default function ChatLobby(
     // connect,
     createChannel,
     sendMessage,
-    getAllUsers}) {
+    getAllUsers,
+    addToGroup,
+    connectionController,
+    removeUser}) {
 
     return(
         <div className="chat-lobby">
             <TeamChat 
+            connectionController={connectionController}
             createChannel={createChannel}
             channels={channels}
             setChannels={setChannels}
@@ -27,6 +31,7 @@ export default function ChatLobby(
             setSelectedChannel={setSelectedChannel}
             currentUser={currentUser}
             getAllUsers={getAllUsers}
+            addToGroup={addToGroup}
             />
             {Object.keys(selectedChannel).length !== 0 ?
             <ChatMenu 
@@ -40,7 +45,8 @@ export default function ChatLobby(
             <ChannelDescription 
             selectedChannel={selectedChannel}
             setSelectedChannel={setSelectedChannel}
-            currentUser={currentUser}/> :
+            currentUser={currentUser}
+            removeUser={removeUser}/> :
             ""}
         </div>
     )
