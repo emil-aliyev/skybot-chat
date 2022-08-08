@@ -1,7 +1,9 @@
 export default class ConnectionController {
+    
     constructor(connection) {
         this.connection = connection;
     }
+
     subscribeEvent = (signalrEvents) => {
         signalrEvents.invokeSignalr = async (args) => await this.connection.invoke(signalrEvents.invokeEventName, ...args);
         this.connection.on(signalrEvents.onEventName, signalrEvents.on);

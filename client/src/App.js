@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./app.css";
 
-import { getUser } from "./api/user/user";
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
+import { getUser } from "./api/user/user";
+import SignalProvider from "./signalr/SignalrProvider";
 import ChatPage from "./components/page/ChatPage";
+import { URL } from './api/serverUrl';
 
 const axios = require('axios');
 
@@ -22,8 +25,18 @@ function App() {
     return(
         <div className="page">
             {currentUser ?
-            <ChatPage 
-            currentUser={currentUser}/>
+            <SignalProvider 
+                connection={
+                    new HubConnectionBuilder()
+                    .withUrl(`${URL}/chatHub`)
+                    .configureLogging(LogLevel.Information)
+                    .withAutomaticReconnect(2000)
+                    .build()
+                }
+            >
+                <ChatPage currentUser={currentUser}/>
+            </SignalProvider>
+         
             :
             <div className="login">
                 <input value={inputId} onChange={e => setInputId(e.target.value)}/>

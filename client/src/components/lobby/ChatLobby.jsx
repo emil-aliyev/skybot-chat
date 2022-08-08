@@ -17,13 +17,11 @@ export default function ChatLobby(
     sendMessage,
     getAllUsers,
     addToGroup,
-    connectionController,
     removeUser}) {
 
     return(
         <div className="chat-lobby">
             <TeamChat 
-            connectionController={connectionController}
             createChannel={createChannel}
             channels={channels}
             setChannels={setChannels}

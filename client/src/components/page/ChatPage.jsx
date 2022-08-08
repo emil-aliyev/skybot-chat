@@ -1,40 +1,12 @@
 import React, { useState, useEffect} from "react";
 
-import connect from "../../api/Connector";
-import ConnectionController from "../../api/ConnectionController";
-
 import Sidebar from "../sidebar/Sidebar";
 import ChatLobby from '../lobby/ChatLobby';
 
 
 export default function ChatPage({ currentUser }){
-
     const [channels, setChannels] = useState(currentUser.roomExistUsers);
     const [selectedChannel, setSelectedChannel] = useState({});   
-    const [connectionController, setConnectionController] = useState();
-
-    useEffect(() => {
-        connectionController.subscribeEvent(createChannelEvent);
-
-        createChannelEvent.on = (channel) => {
-            setChannels(channels => [...channels, channel]);
-        }
-
-        getAllUsers().then(data => {
-            setUsers(data);
-        }).catch(err => console.log(err));
-        
-        const getConnection = connect();
-
-        getConnection.then((connection) => {
-            const connectionController = new ConnectionController(connection);
-
-            setConnectionController(connectionController);
-        }).catch(() => alert('connection failed'));
-
-    }, [])
-
-
 
     // useEffect(() => {
     //     console.log("Connection!")
@@ -143,7 +115,7 @@ export default function ChatPage({ currentUser }){
                 // setUsers={setUsers}
                 selectedChannel={selectedChannel}
                 setSelectedChannel={setSelectedChannel}
-                connectionController={connectionController}/>
+            />
         </>
     );
 };

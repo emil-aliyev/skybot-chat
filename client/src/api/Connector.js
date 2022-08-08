@@ -14,8 +14,6 @@ export default async function connect() {
     return connection;
 }
 
-
-
 /*
  connection.on("RecieveMessage", (message) => {
             console.log("New message: ", message);

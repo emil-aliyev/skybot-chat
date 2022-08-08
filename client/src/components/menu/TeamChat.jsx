@@ -6,7 +6,6 @@ import PrivateChat from "../channel/PrivateChat";
 import Channel from "../channel/publicChannel/Channel";
 import PanelHeader from "../panelheader/PanelHeader";
 import AddChannelPopup from "../Popup/AddChannelPopup/AddChannelPopup";
-import SignalrEvents from "../../api/SignalrEvents";
 
 export default function TeamChat( { createChannel, channels, setChannels, selectedChannel, setSelectedChannel, currentUser, getAllUsers, addToGroup, connectionController } ) {
 

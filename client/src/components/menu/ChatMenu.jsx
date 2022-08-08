@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineFileText, AiOutlineSmile, AiOutlineStar, AiOutlineUserAdd } from "react-icons/ai";
+import SignalrEvents from "../../api/SignalrEvents";
 import Message from "../message/Message";
 import "./chatmenu.css";
 
@@ -42,7 +43,7 @@ export default function ChatMenu({ sendMessage, selectedChannel, setSelectedChan
     return(
         <div className="chat-menu">
             <header>
-                <h1>{ isPrivate ? getOtherUserInfo(selectedChannel, currentUser.id).name : selectedChannel.name}</h1>
+                <h1>{ isPrivate ? "Metish" : selectedChannel.name}</h1>
             </header>
             <div className="chat-field">
                 <div className="messages">

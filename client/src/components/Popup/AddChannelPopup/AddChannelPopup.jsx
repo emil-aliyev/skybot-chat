@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./addchannelpopup.css";
 import { AiOutlineSmile } from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
@@ -8,24 +8,27 @@ import SignalrEvents from "../../../api/SignalrEvents";
 import Popup from "../Popup";
 
 import { getAllUsers } from "../../../api/user/user";
+import SignalrContext from "../../../signalr/SignalrContext";
 
 const createChannelEvent = new SignalrEvents('CreateRoom', 'AddChannel');
 
-export default function AddChannelPopup({ connectionController, currentUser, setChannels, setIsPopupOpen }){
-
+export default function AddChannelPopup({ currentUser, setChannels, setIsPopupOpen }){
+    const connectionController = useContext(SignalrContext);
     const [users, setUsers] = useState([]); 
 
     useEffect(() => {
-        connectionController.subscribeEvent(createChannelEvent);
+        if (connectionController) {
+            connectionController.subscribeEvent(createChannelEvent);
 
-        createChannelEvent.on = (channel) => {
-            setChannels(channels => [...channels, channel]);
+            createChannelEvent.on = (channel) => {
+                setChannels(channels => [...channels, channel]);
+            }
+    
+            getAllUsers().then(data => {
+                setUsers(data);
+            }).catch(err => console.log(err));
         }
-
-        getAllUsers().then(data => {
-            setUsers(data);
-        }).catch(err => console.log(err));
-    }, [])
+    }, [connectionController])
 
 
     const options = users.filter(user => user.id !== currentUser.user.id).map(user => {
